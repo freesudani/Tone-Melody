@@ -17,6 +17,15 @@ const theme = createTheme({
     fontFamily: ["Overpass", "Roboto", "sans-serif"].join(","),
     htmlFontSize: 10,
   },
+  components: {
+    MuiIconButton: {
+      root: {
+        "&:hover": {
+          backgroundColor: "$labelcolor",
+        },
+      },
+    },
+  },
 });
 
 const StyleProvider = (props) => {

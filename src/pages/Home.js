@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   playerbox: {
     position: "absolute",
-    bottom: theme.spacing(-1.5),
+    bottom: theme.spacing(-1.7),
     right: theme.spacing(8),
   },
   guitarplayer: {

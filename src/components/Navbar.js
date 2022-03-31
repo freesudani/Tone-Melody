@@ -30,7 +30,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="fixed" color="transparent" elevation={0}>
+    <AppBar position="absolute" color="transparent" elevation={0}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           size="large"
