@@ -3,6 +3,7 @@ import { Box, AppBar, Toolbar, IconButton, Button } from "@mui/material";
 import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0.png";
 import { makeStyles } from "@mui/styles";
 import { pages } from "../data/navbarmenu";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <AppBar position="absolute" color="transparent" elevation={0}>
@@ -43,8 +45,12 @@ const Navbar = () => {
         </IconButton>
         <Box className={classes.pages}>
           {pages.map((page) => (
-            <Button key={page} className={classes.page}>
-              {page}
+            <Button
+              key={page.name}
+              className={classes.page}
+              onClick={() => navigate(`${page.path}`)}
+            >
+              {page.name}
             </Button>
           ))}
         </Box>
