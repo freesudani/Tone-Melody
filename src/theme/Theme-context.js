@@ -25,6 +25,20 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiTypography: {
+      variants: [
+        {
+          props: { variant: "song" },
+          style: {
+            fontWeight: 400,
+            fontSize: "0.75rem",
+            lineHeight: 1.1,
+            letterSpacing: "0.02222em",
+          },
+        },
+      ],
+    },
   },
 });
 
