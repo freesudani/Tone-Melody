@@ -1,10 +1,12 @@
 import React from "react";
+import NoteIcon from "../components/noteIcon";
 import { Box, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import Guitarplayer from "../images/imageedit_1_5292774868.png";
+import { motion } from "framer-motion";
+import { moverighttVariants } from "../animations/motion-variants";
 import homebg from "../images/blob-haikei.png";
-import NoteIcon from "../components/noteIcon";
+import Guitarplayer from "../images/imageedit_1_5292774868.png";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "45vw",
     marginTop: theme.spacing(22),
+    marginLeft: theme.spacing(3),
     textAlign: "left",
   },
 
@@ -68,7 +71,13 @@ const Home = () => {
           Book an Event
         </Button>
       </Box>
-      <Box className={classes.playerbox}>
+      <Box
+        component={motion.div}
+        variants={moverighttVariants}
+        initial="hidden"
+        animate="visible"
+        className={classes.playerbox}
+      >
         <img src={Guitarplayer} alt="Guitar" className={classes.guitarplayer} />
       </Box>
       <Box className={classes.musicnote}>

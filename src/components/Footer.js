@@ -8,13 +8,13 @@ import {
   IconButton,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import footerbg from "../images/blob-haikei (1).png";
-import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0.png";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import AppleIcon from "@mui/icons-material/Apple";
+import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0.png";
+import footerbg from "../images/blob-haikei (1).png";
 
 const useStyles = makeStyles((theme) => ({
   footer: {

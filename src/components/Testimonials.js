@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Typography, Grid, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import testimonialbg from "../images/diego-sulivan-iDa5Mf7GqRg-unsplash.jpg";
-import ImgPic1 from "../images/88.jpg";
+import { motion } from "framer-motion";
+import { scrollVariants } from "../animations/motion-variants";
 import ImgPic2 from "../images/85.jpg";
+import ImgPic1 from "../images/88.jpg";
+import testimonialbg from "../images/diego-sulivan-iDa5Mf7GqRg-unsplash.jpg";
 
 const useStyles = makeStyles((theme) => ({
   testimonials: {
@@ -31,9 +33,16 @@ const Testimonials = () => {
   return (
     <Box className={classes.testimonials}>
       <h1 align="center" className={classes.testimonialheader} gutterBottom>
-        Customer Testimonial
+        Customer Testimonials
       </h1>
-      <Paper className={classes.testimonial}>
+      <Paper
+        component={motion.div}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={scrollVariants}
+        className={classes.testimonial}
+      >
         <Grid container xs={12} spacing={5} justifyContent="center">
           <Grid item xs={10}>
             <Typography variant="body1" color="textPrimary">
@@ -56,7 +65,14 @@ const Testimonials = () => {
           </Grid>
         </Grid>
       </Paper>
-      <Paper className={classes.testimonial}>
+      <Paper
+        component={motion.div}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={scrollVariants}
+        className={classes.testimonial}
+      >
         <Grid container xs={12} spacing={5} justifyContent="center">
           <Grid item xs={10}>
             <Typography variant="body1" color="textPrimary">

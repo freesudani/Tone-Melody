@@ -6,11 +6,6 @@ import { pathVariants } from "../animations/motion-variants";
 const NoteIcon = () => {
   return (
     <Box>
-      {/* <div>
-        Icon made from
-        <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed
-        by CC BY 3.0
-      </div> */}
       <motion.svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

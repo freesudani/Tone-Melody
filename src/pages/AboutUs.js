@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import homebg from "../images/blob-haikei.png";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import { motion } from "framer-motion";
+import { zoomoutVariants } from "../animations/motion-variants";
+import homebg from "../images/blob-haikei.png";
 
 const useStyles = makeStyles((theme) => ({
   about: {
@@ -39,6 +41,10 @@ const AboutUs = () => {
             color="textPrimary"
             style={{ display: "inline" }}
             gutterBottom
+            component={motion.div}
+            variants={zoomoutVariants}
+            initial="hidden"
+            animate="visible"
           >
             Note & Melody are available exclusively for special events - such as
             weddings & parties - and some very limited public appearances only.
@@ -51,6 +57,10 @@ const AboutUs = () => {
             color="textPrimary"
             style={{ display: "inline" }}
             gutterBottom
+            component={motion.div}
+            variants={zoomoutVariants}
+            initial="hidden"
+            animate="visible"
           >
             YOU deserve the best band for your event, and we’ll do everything we
             can to provide the best quality live band at the best possible price
@@ -67,6 +77,10 @@ const AboutUs = () => {
             color="textPrimary"
             style={{ display: "inline" }}
             gutterBottom
+            component={motion.div}
+            variants={zoomoutVariants}
+            initial="hidden"
+            animate="visible"
           >
             Whether performing romantic tunes, to nailing Top-40 dance hits like
             few can, people who appreciate truly great music , QUALITY singing,

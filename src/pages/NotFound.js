@@ -1,10 +1,9 @@
 import React from "react";
-import { Box } from "@mui/system";
+import { Button, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import homebg from "../images/blob-haikei.png";
-import { Button, Typography } from "@mui/material";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { useNavigate } from "react-router-dom";
+import homebg from "../images/blob-haikei.png";
 
 const useStyles = makeStyles((theme) => ({
   notfound: {

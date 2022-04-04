@@ -1,8 +1,8 @@
 export const pages = [
-  { name: "home", path: "/home" },
+  { name: "Home", path: "/home" },
   { name: "Upcoming tours", path: "/tours" },
-  { name: "weddings", path: "/weddings" },
-  { name: "music", path: "/music" },
-  { name: "about Us", path: "/about" },
-  { name: "contact Us", path: "/contact" },
+  { name: "Weddings", path: "/weddings" },
+  { name: "Music", path: "/music" },
+  { name: "About Us", path: "/about" },
+  { name: "Contact Us", path: "/contact" },
 ];

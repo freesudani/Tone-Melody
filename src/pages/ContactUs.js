@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import homebg from "../images/blob-haikei.png";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import AppleIcon from "@mui/icons-material/Apple";
+import { motion } from "framer-motion";
+import { zoomoutVariants } from "../animations/motion-variants";
+import homebg from "../images/blob-haikei.png";
 
 const useStyles = makeStyles((theme) => ({
   contact: {
@@ -96,7 +98,13 @@ const ContactUs = () => {
   const classes = useStyles();
   return (
     <Box className={classes.contact}>
-      <Box className={classes.socialmedia}>
+      <Box
+        component={motion.div}
+        variants={zoomoutVariants}
+        initial="hidden"
+        animate="visible"
+        className={classes.socialmedia}
+      >
         <IconButton aria-label="twitter" disableFocusRipple disableRipple>
           <TwitterIcon className={classes.twitter} />
         </IconButton>

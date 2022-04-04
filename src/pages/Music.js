@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Button, Typography, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import homebg from "../images/blob-haikei.png";
-import Slider from "react-perfect-slider";
-import imgWalking from "../images/walking_prev_ui.png";
-import { RnBHipHop, Rock, Country } from "../data/musiclist";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
+import { motion } from "framer-motion";
+import { moveLeftVariants } from "../animations/motion-variants";
+import { RnBHipHop, Rock, Country } from "../data/musiclist";
+import imgWalking from "../images/walking_prev_ui.png";
+import homebg from "../images/blob-haikei.png";
+import Slider from "react-perfect-slider";
 
 const useStyles = makeStyles((theme) => ({
   music: {
@@ -156,7 +158,13 @@ const Music = () => {
           </Grid>
         </Box>
       </Slider>
-      <Box className={classes.walkingbox}>
+      <Box
+        component={motion.div}
+        variants={moveLeftVariants}
+        initial="hidden"
+        animate="visible"
+        className={classes.walkingbox}
+      >
         <img src={imgWalking} alt="walking" className={classes.walking} />
       </Box>
     </Box>

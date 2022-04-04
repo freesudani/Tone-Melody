@@ -1,16 +1,20 @@
 import React from "react";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import homebg from "../images/blob-haikei.png";
-import { Box } from "@mui/material";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import micImage from "../images/matt-botsford-OKLqGsCT8qs-unsplash_prev_ui.png";
+import { motion } from "framer-motion";
+import { moverighttVariants } from "../animations/motion-variants";
 import DateObject from "react-date-object";
+import micImage from "../images/matt-botsford-OKLqGsCT8qs-unsplash_prev_ui.png";
+import homebg from "../images/blob-haikei.png";
 
 const useStyles = makeStyles((theme) => ({
   tour: {
@@ -110,7 +114,13 @@ const Tours = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box className={classes.micbox}>
+      <Box
+        component={motion.div}
+        variants={moverighttVariants}
+        initial="hidden"
+        animate="visible"
+        className={classes.micbox}
+      >
         <img src={micImage} alt="mic" className={classes.mic} />
       </Box>
     </Box>

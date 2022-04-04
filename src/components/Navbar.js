@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, AppBar, Toolbar, IconButton, Button } from "@mui/material";
-import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0.png";
+import { Box, AppBar, Toolbar, IconButton } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { NavLink, useNavigate } from "react-router-dom";
 import { pages } from "../data/navbarmenu";
-import { useNavigate } from "react-router-dom";
+import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0.png";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -24,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(3),
     textTransform: "capitalize",
     color: theme.palette.text.primary,
+    textDecoration: "none",
+    borderBottom: "3px solid transparent",
+    transition: "all 250ms ease-in-out",
+  },
+
+  activepage: {
+    borderBottom: "3px solid #000",
   },
 }));
 
@@ -40,18 +47,23 @@ const Navbar = () => {
           color="inherit"
           aria-label="logo"
           disableRipple
+          onClick={() => navigate("/home")}
         >
           <img src={imgLogo} alt="Logo" className={classes.logo} />
         </IconButton>
         <Box className={classes.pages}>
           {pages.map((page) => (
-            <Button
+            <NavLink
+              to={page.path}
               key={page.name}
-              className={classes.page}
-              onClick={() => navigate(`${page.path}`)}
+              className={({ isActive }) =>
+                [classes.page, isActive ? classes.activepage : null]
+                  .filter(Boolean)
+                  .join(" ")
+              }
             >
               {page.name}
-            </Button>
+            </NavLink>
           ))}
         </Box>
       </Toolbar>
