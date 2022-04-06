@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Typography, Grid, Paper } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  Paper,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import { scrollVariants } from "../animations/motion-variants";
@@ -13,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     background: `url(${testimonialbg})`,
     backgroundSize: "cover",
     padding: theme.spacing(3),
+    [theme.breakpoints.down("mobile")]: {
+      height: "185vh",
+    },
+    [theme.breakpoints.down("s9")]: {
+      height: "150vh",
+    },
   },
 
   testimonialheader: {
@@ -30,11 +43,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Testimonials = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
+  const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <Box className={classes.testimonials}>
-      <h1 align="center" className={classes.testimonialheader} gutterBottom>
+      <Typography
+        variant={MQsm ? "h4" : "h2"}
+        align="center"
+        className={classes.testimonialheader}
+        gutterBottom
+      >
         Customer Testimonials
-      </h1>
+      </Typography>
       <Paper
         component={motion.div}
         initial="hidden"
@@ -43,24 +64,37 @@ const Testimonials = () => {
         variants={scrollVariants}
         className={classes.testimonial}
       >
-        <Grid container xs={12} spacing={5} justifyContent="center">
+        <Grid container xs={12} spacing={MQsm ? 3 : 5} justifyContent="center">
           <Grid item xs={10}>
-            <Typography variant="body1" color="textPrimary">
+            <Typography
+              variant={MQmb ? "caption" : MQsm ? "body2" : "body1"}
+              color="textPrimary"
+            >
               Just wanted to let you know how happy we were with the band that
               played at our reception. Everyone had a great time and was up and
               dancing – my father-in-law even got up and played air guitar.
               Thanks for everything!
             </Typography>
-            <Typography variant="h6" color="textPrimary">
+            <Typography
+              variant={MQmb ? "subtitle2" : MQsm ? "subtitle1" : "h6"}
+              color="textPrimary"
+            >
               Zoey Myers
             </Typography>
-            <Typography variant="h6" color="primary">
+            <Typography
+              variant={MQmb ? "subtitle2" : MQsm ? "subtitle1" : "h6"}
+              color="primary"
+            >
               Event Organizer
             </Typography>
           </Grid>
           <Grid item xs={2}>
             <Box>
-              <img src={ImgPic1} alt="pic1" />
+              <img
+                src={ImgPic1}
+                alt="pic1"
+                style={{ width: `${MQmb ? "3rem" : MQsm ? "5rem" : "auto"}` }}
+              />
             </Box>
           </Grid>
         </Grid>
@@ -73,24 +107,37 @@ const Testimonials = () => {
         variants={scrollVariants}
         className={classes.testimonial}
       >
-        <Grid container xs={12} spacing={5} justifyContent="center">
+        <Grid container xs={12} spacing={MQsm ? 3 : 5} justifyContent="center">
           <Grid item xs={10}>
-            <Typography variant="body1" color="textPrimary">
+            <Typography
+              variant={MQmb ? "caption" : MQsm ? "body2" : "body1"}
+              color="textPrimary"
+            >
               Just wanted to say a HUGE thank you to you guys. It was PERFECT –
               the songs were great, the volume was spot-on and you were
               extremely professional. You were lovely guys, too! It all came
               together and everyone commented on how great the music was!
             </Typography>
-            <Typography variant="h6" color="textPrimary">
+            <Typography
+              variant={MQmb ? "subtitle2" : MQsm ? "subtitle1" : "h6"}
+              color="textPrimary"
+            >
               Alexander Steward
             </Typography>
-            <Typography variant="h6" color="primary">
+            <Typography
+              variant={MQmb ? "subtitle2" : MQsm ? "subtitle1" : "h6"}
+              color="primary"
+            >
               Accountant
             </Typography>
           </Grid>
           <Grid item xs={2}>
             <Box>
-              <img src={ImgPic2} alt="pic1" />
+              <img
+                src={ImgPic2}
+                alt="pic1"
+                style={{ width: `${MQmb ? "3rem" : MQsm ? "5rem" : "auto"}` }}
+              />
             </Box>
           </Grid>
         </Grid>

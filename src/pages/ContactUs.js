@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -21,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
+    [theme.breakpoints.down("mobile")]: {
+      flexDirection: "column",
+    },
+    [theme.breakpoints.down("s9")]: {
+      height: "80vh",
+    },
   },
 
   socialmedia: {
@@ -29,6 +42,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexDirection: "column",
     marginRight: theme.spacing(2),
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+    },
+    [theme.breakpoints.down("mobile")]: {
+      flexDirection: "row",
+    },
   },
 
   twitter: {
@@ -37,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5rem",
+    },
     "&:hover": {
       color: "#00acee",
     },
@@ -48,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5rem",
+    },
     "&:hover": {
       color: "#3b5998",
     },
@@ -59,6 +84,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5rem",
+    },
     "&:hover": {
       color: "#3f729b",
     },
@@ -70,6 +98,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5rem",
+    },
     "&:hover": {
       color: "#cd201f",
     },
@@ -81,6 +112,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5rem",
+    },
     "&:hover": {
       color: "#66b447",
     },
@@ -88,14 +122,26 @@ const useStyles = makeStyles((theme) => ({
 
   phone: {
     textTransform: "capitalize",
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(-8),
+    },
   },
   button: {
     marginLeft: theme.spacing(20),
+    [theme.breakpoints.down("md")]: {
+      marginLeft: theme.spacing(8),
+    },
+    [theme.breakpoints.down("mobile")]: {
+      marginLeft: theme.spacing(0),
+    },
   },
 }));
 
 const ContactUs = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
+  const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <Box className={classes.contact}>
       <Box
@@ -122,11 +168,15 @@ const ContactUs = () => {
         </IconButton>
       </Box>
       <Box className={classes.phone}>
-        <Typography variant="h3" align="center" gutterBottom>
+        <Typography
+          variant={MQmb ? "h5" : MQmd ? "h4" : "h3"}
+          align="center"
+          gutterBottom
+        >
           or Contact us at
         </Typography>
         <Typography
-          variant="h2"
+          variant={MQmb ? "h4" : MQmd ? "h3" : "h2"}
           align="center"
           gutterBottom
           style={{ fontWeight: "bold", backdropFilter: "blur(3px)" }}

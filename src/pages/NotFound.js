@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  [theme.breakpoints.down("s9")]: {
+    height: "80vh",
+  },
 }));
 
 const NotFound = () => {

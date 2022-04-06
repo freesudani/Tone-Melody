@@ -1,6 +1,12 @@
 import React from "react";
 import NoteIcon from "../components/noteIcon";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import { motion } from "framer-motion";
@@ -15,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     backgroundSize: "cover",
     padding: theme.spacing(3),
+    [theme.breakpoints.down("s9")]: {
+      height: "80vh",
+    },
   },
 
   musicnote: {
@@ -28,6 +37,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(22),
     marginLeft: theme.spacing(3),
     textAlign: "left",
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(18),
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "80vw",
+      textAlign: "center",
+      marginLeft: theme.spacing(0),
+    },
   },
 
   text2: {
@@ -41,16 +58,25 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     bottom: theme.spacing(-1.7),
     right: theme.spacing(8),
+    [theme.breakpoints.down("md")]: {
+      right: theme.spacing(-5),
+      bottom: theme.spacing(-1.4),
+    },
   },
   guitarplayer: {
     width: "100%",
     maxWidth: "40rem",
     height: "auto",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));
 
 const Home = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //600px
   return (
     <Box className={classes.header}>
       <Box className={classes.textbox}>
@@ -64,7 +90,7 @@ const Home = () => {
         </Typography>
         <Button
           variant="contained"
-          size="large"
+          size={MQmb ? "medium" : "large"}
           className={classes.button}
           endIcon={<MusicNoteIcon />}
         >

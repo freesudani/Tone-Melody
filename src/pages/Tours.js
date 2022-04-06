@@ -13,6 +13,7 @@ import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
 import { moverighttVariants } from "../animations/motion-variants";
 import DateObject from "react-date-object";
+import { useTheme, useMediaQuery } from "@mui/material";
 import micImage from "../images/matt-botsford-OKLqGsCT8qs-unsplash_prev_ui.png";
 import homebg from "../images/blob-haikei.png";
 
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     backgroundSize: "cover",
     padding: theme.spacing(3),
+    [theme.breakpoints.down("s9")]: {
+      height: "80vh",
+    },
   },
 
   tablecontainer: {
@@ -30,18 +34,46 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(50),
     maxWidth: 900,
     height: 450,
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(15),
+      marginLeft: theme.spacing(30),
+      maxWidth: 600,
+      height: 350,
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(18),
+      marginLeft: theme.spacing(0),
+      maxWidth: 550,
+      height: 300,
+    },
+  },
+
+  cell: {
+    "&.MuiTableCell-sizeSmall": {
+      fontSize: "1rem",
+    },
   },
 
   micbox: {
     position: "absloute",
     marginTop: theme.spacing(-46.8),
     marginLeft: theme.spacing(-40),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(-33.9),
+      marginLeft: theme.spacing(-35),
+    },
   },
 
   mic: {
     maxWidth: "45rem",
     width: "100%",
     height: "auto",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "35rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -87,15 +119,32 @@ const rows = [
 
 const Tours = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
+
   return (
     <Box className={classes.tour}>
       <TableContainer component={Paper} className={classes.tablecontainer}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Events Name</TableCell>
-              <TableCell align="center">Address</TableCell>
-              <TableCell align="center">Date/Time</TableCell>
+              <TableCell size={MQmd && "small"} className={classes.cell}>
+                Events Name
+              </TableCell>
+              <TableCell
+                align="center"
+                size={MQmd && "small"}
+                className={classes.cell}
+              >
+                Address
+              </TableCell>
+              <TableCell
+                align="center"
+                size={MQmd && "small"}
+                className={classes.cell}
+              >
+                Date/Time
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -104,11 +153,28 @@ const Tours = () => {
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
+                <TableCell
+                  component="th"
+                  scope="row"
+                  size={MQmd && "small"}
+                  className={classes.cell}
+                >
                   {row.name}
                 </TableCell>
-                <TableCell align="center">{row.address}</TableCell>
-                <TableCell align="center">{row.date}</TableCell>
+                <TableCell
+                  align="center"
+                  size={MQmd && "small"}
+                  className={classes.cell}
+                >
+                  {row.address}
+                </TableCell>
+                <TableCell
+                  align="center"
+                  size={MQmd && "small"}
+                  className={classes.cell}
+                >
+                  {row.date}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

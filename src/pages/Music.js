@@ -15,19 +15,50 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     background: `url(${homebg})`,
     height: "100vh",
-
     backgroundSize: "cover",
     padding: theme.spacing(3),
     paddingTop: theme.spacing(20),
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(1),
+      paddingTop: theme.spacing(16),
+    },
+    [theme.breakpoints.down("mobile")]: {
+      padding: theme.spacing(0),
+      paddingTop: theme.spacing(16),
+    },
+    [theme.breakpoints.down("s9")]: {
+      height: "80vh",
+    },
   },
 
   button1: {
-    marginLeft: theme.spacing(62),
+    color: "#000",
+    marginLeft: "2.6rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-4.1rem",
+    },
+  },
+
+  button2: {
+    color: "#000",
+    marginLeft: "1.5rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-4.1rem",
+    },
   },
 
   slide: {
     width: "80vw",
     height: "25rem",
+    [theme.breakpoints.down("md")]: {
+      width: "95vw",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "90vw",
+    },
+    [theme.breakpoints.down("mobile")]: {
+      width: "100vw",
+    },
   },
 
   slideheader: {
@@ -43,6 +74,18 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     height: "6.5rem",
     borderRadius: theme.shape.borderRadius,
+    overflow: "scroll",
+    [theme.breakpoints.down("md")]: {
+      margin: theme.spacing(0.5),
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(0.2),
+      height: "6.6rem",
+    },
+    [theme.breakpoints.down("mobile")]: {
+      margin: theme.spacing(0.1),
+      height: "6.6rem",
+    },
   },
 
   songtext: {
@@ -58,11 +101,15 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     maxWidth: "560rem",
     zIndex: "1",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
 const Music = () => {
   const classes = useStyles();
+
   return (
     <Box className={classes.music}>
       <Slider
@@ -71,14 +118,14 @@ const Music = () => {
         renderControls={(next, previous) => [
           <Button
             onClick={previous}
-            style={{ color: "#000", marginLeft: "2.6rem" }}
+            className={classes.button1}
             startIcon={<SkipPreviousIcon />}
           >
             Previous
           </Button>,
           <Button
             onClick={next}
-            style={{ color: "#000", marginLeft: "1.5rem" }}
+            className={classes.button2}
             endIcon={<SkipNextIcon />}
           >
             Next
