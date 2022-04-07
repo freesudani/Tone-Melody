@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,10 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import AppleIcon from "@mui/icons-material/Apple";
+import FAQModal from "./FAQ";
+import PrivacyModal from "./Privacy";
+import PDModal from "./PersonalData";
+import ContactModal from "./Contact";
 import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0_prev_ui.png";
 import footerbg from "../images/blob-haikei (1).png";
 
@@ -125,9 +129,26 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const handleOpen1 = () => setOpen1(true);
+  const handleClose1 = () => setOpen1(false);
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+  const handleOpen3 = () => setOpen3(true);
+  const handleClose3 = () => setOpen3(false);
+
   const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
   const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
+
+  const emailHandler = (event) => {
+    event.preventdefault();
+  };
 
   return (
     <Box className={classes.footer}>
@@ -151,6 +172,7 @@ const Footer = () => {
                 type="submit"
                 variant="contained"
                 size={MQmd ? "small" : "medium"}
+                onClick={emailHandler}
               >
                 Submit
               </Button>
@@ -161,22 +183,42 @@ const Footer = () => {
           <Typography variant={MQmd ? "h6" : "h5"}>More Info</Typography>
           <Box className={classes.moreinfo}>
             <Box>
-              <Button size="small" color="inherit" className={classes.info}>
+              <Button
+                size="small"
+                color="inherit"
+                className={classes.info}
+                onClick={handleOpen3}
+              >
                 Contact
               </Button>
             </Box>
             <Box>
-              <Button size="small" color="inherit" className={classes.info}>
+              <Button
+                size="small"
+                color="inherit"
+                className={classes.info}
+                onClick={handleOpen}
+              >
                 FAQs
               </Button>
             </Box>
             <Box>
-              <Button size="small" color="inherit" className={classes.info}>
+              <Button
+                size="small"
+                color="inherit"
+                className={classes.info}
+                onClick={handleOpen1}
+              >
                 Privacy
               </Button>
             </Box>
             <Box>
-              <Button size="small" color="inherit" className={classes.info}>
+              <Button
+                size="small"
+                color="inherit"
+                className={classes.info}
+                onClick={handleOpen2}
+              >
                 You Data
               </Button>
             </Box>
@@ -243,6 +285,10 @@ const Footer = () => {
           </Typography>
         </Grid>
       </Grid>
+      <FAQModal open={open} handleClose={handleClose} />
+      <PrivacyModal open={open1} handleClose={handleClose1} />
+      <PDModal open={open2} handleClose={handleClose2} />
+      <ContactModal open={open3} handleClose={handleClose3} />
     </Box>
   );
 };
