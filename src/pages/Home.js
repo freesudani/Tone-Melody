@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     padding: theme.spacing(3),
     [theme.breakpoints.down("s9")]: {
-      height: "80vh",
+      height: "100vh",
     },
   },
 

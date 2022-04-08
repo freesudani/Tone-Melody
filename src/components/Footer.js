@@ -29,12 +29,15 @@ const useStyles = makeStyles((theme) => ({
     height: "60vh",
     backgroundSize: "cover",
     padding: theme.spacing(6),
+    [theme.breakpoints.down("lg")]: {
+      height: "100%",
+      padding: theme.spacing(1.7),
+    },
     [theme.breakpoints.down("md")]: {
-      height: "45vh",
       padding: theme.spacing(2),
     },
     [theme.breakpoints.down("mobile")]: {
-      height: "100%",
+      padding: theme.spacing(1),
     },
   },
 
@@ -47,9 +50,11 @@ const useStyles = makeStyles((theme) => ({
 
   moreinfo: {
     color: theme.palette.text.primary,
-    [theme.breakpoints.down("mobile")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "flex",
       fontSize: "1rem",
+      justifyContent: "space-between",
+      alignItems: "center",
     },
   },
 
@@ -65,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(5),
     [theme.breakpoints.down("md")]: {
       marginLeft: theme.spacing(1.5),
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: theme.spacing(10),
     },
   },
 
@@ -142,9 +150,11 @@ const Footer = () => {
   const handleOpen3 = () => setOpen3(true);
   const handleClose3 = () => setOpen3(false);
 
+  const MQs9 = useMediaQuery(theme.breakpoints.down("s9")); //360px
   const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
   const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
+  const MQlg = useMediaQuery(theme.breakpoints.down("lg")); //1200px
 
   const emailHandler = (event) => {
     event.preventdefault();
@@ -154,25 +164,37 @@ const Footer = () => {
     <Box className={classes.footer}>
       <Grid container xs={12} spacing={3}>
         <Grid item mobile={12} sm={5}>
-          <Typography variant={MQmd ? "h6" : "h5"}>The Latest</Typography>
+          <Typography
+            variant={MQmd ? "h6" : "h5"}
+            align={MQsm ? "center" : "left"}
+          >
+            The Latest
+          </Typography>
           <Typography
             variant={MQmd ? "caption" : "body2"}
             color="textPrimary"
             gutterBottom
+            align={MQsm ? "center" : "left"}
           >
             Stay up to date on the latest Journey merch released and tour dates
             for 2021 + Beyond
           </Typography>
           <form className={classes.form}>
             <Box>
-              <TextField name="email" label="Email" size="small" />
+              <TextField
+                name="email"
+                label="Email"
+                size="small"
+                fullWidth={MQsm ? "true" : "false"}
+              />
             </Box>
-            <Box style={{ marginTop: `${MQsm && "1rem"}` }}>
+            <Box style={{ marginTop: `${MQlg && "0.5rem"}${MQsm && "1rem"}` }}>
               <Button
                 type="submit"
                 variant="contained"
                 size={MQmd ? "small" : "medium"}
                 onClick={emailHandler}
+                fullWidth={MQsm ? "true" : "false"}
               >
                 Submit
               </Button>
@@ -180,7 +202,12 @@ const Footer = () => {
           </form>
         </Grid>
         <Grid item mobile={12} sm={3}>
-          <Typography variant={MQmd ? "h6" : "h5"}>More Info</Typography>
+          <Typography
+            variant={MQmd ? "h6" : "h5"}
+            align={MQsm ? "center" : "left"}
+          >
+            More Info
+          </Typography>
           <Box className={classes.moreinfo}>
             <Box>
               <Button
@@ -280,7 +307,7 @@ const Footer = () => {
               </IconButton>
             </Box>
           )}
-          <Typography variant="caption">
+          <Typography variant={MQs9 ? "song" : "caption"}>
             © 2022 Tone&Melody. All Rights reserved.
           </Typography>
         </Grid>

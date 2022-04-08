@@ -34,17 +34,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(50),
     maxWidth: 900,
     height: 450,
-    [theme.breakpoints.down("md")]: {
-      marginTop: theme.spacing(15),
-      marginLeft: theme.spacing(30),
-      maxWidth: 600,
-      height: 350,
+    [theme.breakpoints.down("lg")]: {
+      marginTop: theme.spacing(13),
+      marginLeft: theme.spacing(52),
+      maxWidth: 700,
+      height: 400,
     },
     [theme.breakpoints.down("md")]: {
       marginTop: theme.spacing(18),
-      marginLeft: theme.spacing(0),
-      maxWidth: 550,
-      height: 300,
+      marginLeft: theme.spacing(15),
+      maxWidth: 600,
+      height: 350,
+    },
+    [theme.breakpoints.down("mobile")]: {
+      marginTop: theme.spacing(18),
+      marginLeft: theme.spacing(1),
+      maxWidth: 600,
+      height: 350,
     },
   },
 
@@ -58,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
     position: "absloute",
     marginTop: theme.spacing(-46.8),
     marginLeft: theme.spacing(-40),
+    [theme.breakpoints.down("lg")]: {
+      marginTop: theme.spacing(-49.2),
+      marginLeft: theme.spacing(-42),
+    },
     [theme.breakpoints.down("md")]: {
       marginTop: theme.spacing(-33.9),
       marginLeft: theme.spacing(-35),

@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexDirection: "column",
     marginRight: theme.spacing(2),
+    [theme.breakpoints.down("lg")]: {
+      marginRight: theme.spacing(0),
+    },
     [theme.breakpoints.down("md")]: {
       justifyContent: "center",
     },
@@ -56,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "3rem",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "2.5rem",
     },
@@ -70,6 +76,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "3rem",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "2.5rem",
     },
@@ -84,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "3rem",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "2.5rem",
     },
@@ -98,6 +110,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "3rem",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "2.5rem",
     },
@@ -112,6 +127,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.standard,
     }),
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "3rem",
+    },
     [theme.breakpoints.down("md")]: {
       fontSize: "2.5rem",
     },
@@ -140,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
 const ContactUs = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
+  const MQlg = useMediaQuery(theme.breakpoints.down("lg")); //1200px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <Box className={classes.contact}>
@@ -169,14 +187,14 @@ const ContactUs = () => {
       </Box>
       <Box className={classes.phone}>
         <Typography
-          variant={MQmb ? "h5" : MQmd ? "h4" : "h3"}
+          variant={MQmb ? "h5" : MQlg ? "h4" : "h3"}
           align="center"
           gutterBottom
         >
           or Contact us at
         </Typography>
         <Typography
-          variant={MQmb ? "h4" : MQmd ? "h3" : "h2"}
+          variant={MQmb ? "h4" : MQlg ? "h3" : "h2"}
           align="center"
           gutterBottom
           style={{ fontWeight: "bold", backdropFilter: "blur(3px)" }}

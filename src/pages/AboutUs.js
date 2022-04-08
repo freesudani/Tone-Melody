@@ -27,12 +27,13 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const MQlg = useMediaQuery(theme.breakpoints.down("lg")); //1200px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
 
   return (
     <Box className={classes.about}>
       <Typography
-        variant={MQmb ? "h6" : "h4"}
+        variant={MQmb ? "h6" : MQlg ? "h5" : "h4"}
         color="text"
         className={classes.aboutheader}
         gutterBottom
@@ -43,7 +44,7 @@ const AboutUs = () => {
         <Box>
           <MusicNoteIcon style={{ verticalAlign: "middle" }} fontSize="small" />
           <Typography
-            variant="body2"
+            variant={MQlg ? "caption" : "body2"}
             color="textPrimary"
             style={{ display: "inline" }}
             gutterBottom
@@ -63,7 +64,7 @@ const AboutUs = () => {
               fontSize="small"
             />
             <Typography
-              variant={MQmb ? "caption" : "body2"}
+              variant={MQlg ? "caption" : "body2"}
               color="textPrimary"
               style={{ display: "inline" }}
               gutterBottom
@@ -89,7 +90,7 @@ const AboutUs = () => {
             />
 
             <Typography
-              variant="body2"
+              variant={MQlg ? "caption" : "body2"}
               color="textPrimary"
               style={{ display: "inline" }}
               gutterBottom

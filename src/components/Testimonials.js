@@ -20,11 +20,14 @@ const useStyles = makeStyles((theme) => ({
     background: `url(${testimonialbg})`,
     backgroundSize: "cover",
     padding: theme.spacing(3),
-    [theme.breakpoints.down("mobile")]: {
-      height: "185vh",
+    [theme.breakpoints.down("lg")]: {
+      height: "170vh",
     },
-    [theme.breakpoints.down("s9")]: {
-      height: "150vh",
+    [theme.breakpoints.down("md")]: {
+      height: "140vh",
+    },
+    [theme.breakpoints.down("mobile")]: {
+      height: "180vh",
     },
   },
 
@@ -44,12 +47,13 @@ const useStyles = makeStyles((theme) => ({
 const Testimonials = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const MQlg = useMediaQuery(theme.breakpoints.down("lg")); //1200px
   const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <Box className={classes.testimonials}>
       <Typography
-        variant={MQsm ? "h4" : "h2"}
+        variant={MQsm ? "h4" : MQlg ? "h3" : "h2"}
         align="center"
         className={classes.testimonialheader}
         gutterBottom

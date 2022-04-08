@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 const Weddings = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const MQlg = useMediaQuery(theme.breakpoints.down("lg")); //1200px
   const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
 
@@ -62,20 +63,15 @@ const Weddings = () => {
             alt="wedding1"
             className={classes.weddingimg}
           />
-          <img
-            src={weddingImage2}
-            alt="wedding2"
-            className={classes.weddingimg}
-          />
         </Grid>
         <Grid item xs={12} md={6}>
-          {!MQmb && (
+          {!MQlg && (
             <Box style={{ float: "left" }}>
               <WeddingtoneIcon />
             </Box>
           )}
           <Typography
-            variant={MQmb ? "caption" : MQmd ? "OVERLINE" : "body2"}
+            variant={MQmb ? "caption" : MQlg ? "OVERLINE" : "body2"}
             color="textPrimary"
             component={motion.div}
             variants={zoomoutVariants}
@@ -88,19 +84,21 @@ const Weddings = () => {
             entertain your guests from dinner music to high energy dance music
             later in the night.
           </Typography>
-          <Typography
-            variant={MQmb ? "caption" : MQmd ? "OVERLINE" : "body2"}
-            color="textPrimary"
-            component={motion.div}
-            variants={zoomoutVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            find it very easy working with our talented support staff as each
-            detail of the wedding reception is worked through. From song
-            requests to the timing of each phase of the reception, Note & Melody
-            Band has the experience and talent to make it happen.
-          </Typography>
+          {!MQlg && (
+            <Typography
+              variant={MQmb ? "caption" : MQlg ? "OVERLINE" : "body2"}
+              color="textPrimary"
+              component={motion.div}
+              variants={zoomoutVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              find it very easy working with our talented support staff as each
+              detail of the wedding reception is worked through. From song
+              requests to the timing of each phase of the reception, Note &
+              Melody Band has the experience and talent to make it happen.
+            </Typography>
+          )}
         </Grid>
       </Grid>
     </Box>

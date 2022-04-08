@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     padding: theme.spacing(3),
     paddingTop: theme.spacing(20),
+    [theme.breakpoints.down("lg")]: {
+      paddingTop: theme.spacing(15.6),
+    },
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(1),
       paddingTop: theme.spacing(16),
@@ -34,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   button1: {
     color: "#000",
     marginLeft: "2.6rem",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "-3.1rem",
+    },
     [theme.breakpoints.down("sm")]: {
       marginTop: "-4.1rem",
     },
@@ -42,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
   button2: {
     color: "#000",
     marginLeft: "1.5rem",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "-3.1rem",
+    },
     [theme.breakpoints.down("sm")]: {
       marginTop: "-4.1rem",
     },
@@ -75,9 +84,10 @@ const useStyles = makeStyles((theme) => ({
     height: "6.5rem",
     borderRadius: theme.shape.borderRadius,
     overflow: "scroll",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       margin: theme.spacing(0.5),
     },
+
     [theme.breakpoints.down("sm")]: {
       margin: theme.spacing(0.2),
       height: "6.6rem",
@@ -96,6 +106,10 @@ const useStyles = makeStyles((theme) => ({
     position: "absloute",
     marginTop: theme.spacing(-48),
     marginLeft: theme.spacing(105),
+    [theme.breakpoints.down("lg")]: {
+      marginTop: theme.spacing(-53),
+      marginLeft: theme.spacing(90),
+    },
   },
   walking: {
     height: "auto",

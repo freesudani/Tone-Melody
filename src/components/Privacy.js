@@ -1,20 +1,32 @@
 import React from "react";
-import { Box, Typography, Modal } from "@mui/material";
+import { Box, Typography, Modal, useTheme, useMediaQuery } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  borderRadius: "10px",
-  boxShadow: 24,
-  p: 1,
-};
+const useStyles = makeStyles((theme) => ({
+  style: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 800,
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    borderRadius: "10px",
+    boxShadow: 24,
+    p: 1,
+    [theme.breakpoints.down("sm")]: {
+      width: 500,
+    },
+    [theme.breakpoints.down("mobile")]: {
+      width: 350,
+    },
+  },
+}));
 
 export default function PrivacyModal({ open, handleClose }) {
+  const classes = useStyles();
+  const theme = useTheme();
+  const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <div>
       <Modal
@@ -23,19 +35,27 @@ export default function PrivacyModal({ open, handleClose }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className={classes.style}>
           <Typography
-            variant="h5"
+            variant={MQmb ? "h6" : "h5"}
             color="textPrimary"
             align="center"
             gutterBottom
           >
             PRIVACY POLICY
           </Typography>
-          <Typography variant="body1" color="textPrimary" align="left">
+          <Typography
+            variant={MQmb ? "caption" : "body1"}
+            color="textPrimary"
+            align="left"
+          >
             Effective: June 28, 2019.
           </Typography>
-          <Typography variant="body2" color="textPrimary" align="justify">
+          <Typography
+            variant={MQmb ? "caption" : "body1"}
+            color="textPrimary"
+            align="justify"
+          >
             Information We May Collect From You
             <br /> When you use the Site or contact us by e-mail, social media,
             SMS, telephone, or other methods, we may collect and process the
