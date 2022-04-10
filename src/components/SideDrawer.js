@@ -1,18 +1,20 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
+import React, { useState } from "react";
+import {
+  Box,
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemText from "@mui/material/ListItemText";
-import { NavLink } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
-import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0_prev_ui.png";
+import { NavLink } from "react-router-dom";
 import { pages } from "../data/navbarmenu";
-import Typography from "@mui/material/Typography";
+import imgLogo from "../images/36ad5d7c035c4b129512b898e11cb9b0_prev_ui.png";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   drawer: {
     textDecoration: "none",
   },
@@ -20,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: "12rem",
   },
-}));
+});
 
 const TemporaryDrawer = () => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,

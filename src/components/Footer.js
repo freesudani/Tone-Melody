@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import AppleIcon from "@mui/icons-material/Apple";
+import { useDispatch } from "react-redux";
+import { modalActions } from "../redux/modalControl";
 import FAQModal from "./FAQ";
 import PrivacyModal from "./Privacy";
 import PDModal from "./PersonalData";
@@ -137,19 +139,7 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const handleOpen1 = () => setOpen1(true);
-  const handleClose1 = () => setOpen1(false);
-  const handleOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
-  const handleOpen3 = () => setOpen3(true);
-  const handleClose3 = () => setOpen3(false);
-
+  const dispatch = useDispatch();
   const MQs9 = useMediaQuery(theme.breakpoints.down("s9")); //360px
   const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
   const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
@@ -214,7 +204,7 @@ const Footer = () => {
                 size="small"
                 color="inherit"
                 className={classes.info}
-                onClick={handleOpen3}
+                onClick={() => dispatch(modalActions.handleOpen3())}
               >
                 Contact
               </Button>
@@ -224,7 +214,7 @@ const Footer = () => {
                 size="small"
                 color="inherit"
                 className={classes.info}
-                onClick={handleOpen}
+                onClick={() => dispatch(modalActions.handleOpen())}
               >
                 FAQs
               </Button>
@@ -234,7 +224,7 @@ const Footer = () => {
                 size="small"
                 color="inherit"
                 className={classes.info}
-                onClick={handleOpen1}
+                onClick={() => dispatch(modalActions.handleOpen1())}
               >
                 Privacy
               </Button>
@@ -244,7 +234,7 @@ const Footer = () => {
                 size="small"
                 color="inherit"
                 className={classes.info}
-                onClick={handleOpen2}
+                onClick={() => dispatch(modalActions.handleOpen2())}
               >
                 You Data
               </Button>
@@ -312,10 +302,10 @@ const Footer = () => {
           </Typography>
         </Grid>
       </Grid>
-      <FAQModal open={open} handleClose={handleClose} />
-      <PrivacyModal open={open1} handleClose={handleClose1} />
-      <PDModal open={open2} handleClose={handleClose2} />
-      <ContactModal open={open3} handleClose={handleClose3} />
+      <FAQModal />
+      <PrivacyModal />
+      <PDModal />
+      <ContactModal />
     </Box>
   );
 };

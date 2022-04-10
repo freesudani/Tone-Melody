@@ -10,6 +10,8 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useSelector, useDispatch } from "react-redux";
+import { modalActions } from "../redux/modalControl";
 import { FrequentlyAskedQuestions } from "../data/faq";
 import { makeStyles } from "@mui/styles";
 
@@ -34,9 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FAQModal({ open, handleClose }) {
+export default function FAQModal() {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.open);
   const MQs9 = useMediaQuery(theme.breakpoints.down("s9")); //360px
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = (panel) => (event, isExpanded) => {
@@ -47,7 +51,7 @@ export default function FAQModal({ open, handleClose }) {
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => dispatch(modalActions.handleClose())}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

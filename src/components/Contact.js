@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, TextField, Button, Typography, Modal } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { modalActions } from "../redux/modalControl";
 
 const useStyles = makeStyles((theme) => ({
   style: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
   textfield: {
     width: "60%",
-    p: 1,
+    padding: 10,
     [theme.breakpoints.down("mobile")]: {
       width: "95%",
       padding: "0.5rem",
@@ -42,16 +44,17 @@ const useStyles = makeStyles((theme) => ({
   labelRoot: {
     fontSize: 15,
   },
-  labelFocused: {},
 }));
 
-export default function ContactModal({ open, handleClose }) {
+export default function ContactModal() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.open3);
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => dispatch(modalActions.handleClose3())}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

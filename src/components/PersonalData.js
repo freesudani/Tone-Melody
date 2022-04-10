@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, TextField, Button, Typography, Modal } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { modalActions } from "../redux/modalControl";
 
 const useStyles = makeStyles((theme) => ({
   style: {
@@ -24,13 +26,15 @@ const useStyles = makeStyles((theme) => ({
   form: { display: "flex", flexDirection: "row", justifyContent: "center" },
 }));
 
-export default function PDModal({ open, handleClose }) {
+export default function PDModal() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.open2);
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => dispatch(modalActions.handleClose2())}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

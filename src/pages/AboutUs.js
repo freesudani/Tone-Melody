@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   aboutheader: {
     textTransform: "uppercase",
   },
-  aboutdetails: {},
 }));
 
 const AboutUs = () => {

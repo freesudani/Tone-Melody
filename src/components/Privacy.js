@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Typography, Modal, useTheme, useMediaQuery } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { modalActions } from "../redux/modalControl";
 
 const useStyles = makeStyles((theme) => ({
   style: {
@@ -13,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     borderRadius: "10px",
     boxShadow: 24,
-    p: 1,
+    p: 7,
+    overflow: "scroll",
     [theme.breakpoints.down("sm")]: {
       width: 500,
     },
@@ -23,15 +26,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrivacyModal({ open, handleClose }) {
+export default function PrivacyModal() {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.open1);
   const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //400px
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => dispatch(modalActions.handleClose1())}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

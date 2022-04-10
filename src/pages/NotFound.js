@@ -1,5 +1,11 @@
 import React from "react";
-import { Button, Typography, Box } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Box,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { useNavigate } from "react-router-dom";
@@ -24,14 +30,16 @@ const useStyles = makeStyles((theme) => ({
 const NotFound = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const theme = useTheme();
+  const MQmb = useMediaQuery(theme.breakpoints.down("mobile")); //600px
   return (
     <Box className={classes.notfound}>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant={MQmb ? "h3" : "h2"} gutterBottom>
         Page Not Found
       </Typography>
       <Button
         variant="contained"
-        size="large"
+        size={MQmb ? "medium" : "large"}
         color="info"
         endIcon={<KeyboardReturnIcon />}
         onClick={() => navigate("/home")}

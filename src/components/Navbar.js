@@ -55,7 +55,7 @@ const Navbar = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const theme = useTheme();
-  const MQsm = useMediaQuery(theme.breakpoints.down("sm")); //600px
+  const MQmd = useMediaQuery(theme.breakpoints.down("md")); //900px
 
   return (
     <AppBar position="absolute" color="transparent" elevation={0}>
@@ -70,7 +70,7 @@ const Navbar = () => {
         >
           <img src={imgLogo} alt="Logo" className={classes.logo} />
         </IconButton>
-        {!MQsm ? (
+        {!MQmd ? (
           <Box className={classes.pages}>
             {pages.map((page) => (
               <NavLink
